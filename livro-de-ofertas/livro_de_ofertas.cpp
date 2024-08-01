@@ -1,77 +1,89 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
-struct Oferta
+struct Offer
 {
-    int posicao;
-    double valor;
-    int quantidade;
+    int positionProduct;
+    double valueProduct;
+    int amountProduct;
 };
 
-void imprimirOfertas(const vector<Oferta> &ofertas)
+void printOffers(const std::vector<Offer> &offers)
 {
-    cout << "" << endl;
-    cout << "LIVRO DE OFERTA" << endl;
-    cout << "POSICAO\tVALOR\tQUANTIDADE" << endl;
-    for (const auto &oferta : ofertas)
+    std::cout << "\nLIVRO DE OFERTA\n";
+    std::cout << "POSIÇÃO\tVALOR\tQUANTIDADE\n";
+    for (const auto &offer : offers)
     {
-        cout << oferta.posicao << "\t" << oferta.valor << "\t" << oferta.quantidade << endl;
+        std::cout << offer.positionProduct << "\t" << offer.valueProduct << "\t" << offer.amountProduct << "\n";
     }
+}
+
+bool positionExists(const std::vector<Offer> &offers, int position)
+{
+    for (const auto &offer : offers)
+    {
+        if (offer.positionProduct == position)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 int main()
 {
-    int numNotificacoes;
-    cin >> numNotificacoes;
+    int numNotifications;
+    std::cin >> numNotifications;
 
-    vector<Oferta> ofertas;
+    std::vector<Offer> offers;
 
-    for (int i = 0; i < numNotificacoes; ++i)
+    for (int i = 0; i < numNotifications; ++i)
     {
-        int posicao, acao, quantidade;
-        double valor;
-        char virgula;
+        int positionProduct, action, amountProduct;
+        double valueProduct;
+        char comma;
 
-        cin >> posicao >> virgula >> acao >> virgula >> valor >> virgula >> quantidade;
+        std::cin >> positionProduct >> comma >> action >> comma >> valueProduct >> comma >> amountProduct;
 
-        // Verifica se VALOR e QUANTIDADE são positivos 
-        if (valor <= 0 || quantidade <= 0)
+        // Verifica se valueProduct e amountProduct são positivos
+        if (valueProduct <= 0 || amountProduct <= 0)
         {
             continue; // Ignora a entrada inválida
         }
 
-        if (acao == 0)
-        { // INSERIR
-            ofertas.push_back({posicao, valor, quantidade});
-        }
-        else if (acao == 1)
-        { // MODIFICAR
-            for (auto &oferta : ofertas)
+        if (action == 0)
+        { // INSERT
+            if (!positionExists(offers, positionProduct))
             {
-                if (oferta.posicao == posicao)
+                offers.push_back({positionProduct, valueProduct, amountProduct});
+            }
+        }
+        else if (action == 1)
+        { // MODIFY
+            for (auto &offer : offers)
+            {
+                if (offer.positionProduct == positionProduct)
                 {
-                    oferta.valor = valor;
-                    oferta.quantidade = quantidade;
+                    offer.valueProduct = valueProduct;
+                    offer.amountProduct = amountProduct;
                     break;
                 }
             }
         }
-        else if (acao == 2)
-        { // DELETAR
-            for (auto it = ofertas.begin(); it != ofertas.end(); ++it)
+        else if (action == 2)
+        { // DELETE
+            for (auto it = offers.begin(); it != offers.end(); ++it)
             {
-                if (it->posicao == posicao)
+                if (it->positionProduct == positionProduct)
                 {
-                    ofertas.erase(it);
+                    offers.erase(it);
                     break;
                 }
             }
         }
     }
 
-    imprimirOfertas(ofertas);
+    printOffers(offers);
 
     return 0;
 }
