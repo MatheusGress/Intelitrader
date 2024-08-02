@@ -2,7 +2,6 @@
 #include <vector>
 #include <climits>
 #include <cmath>
-#include <locale.h>
 
 int FindShortDistance(const std::vector<int> &firstArray, const std::vector<int> &secondArray)
 {
@@ -25,7 +24,6 @@ int FindShortDistance(const std::vector<int> &firstArray, const std::vector<int>
 
 int main()
 { 
-    setlocale(LC_ALL, "portuguese");
     std::vector<int> firstArray = {-1, 5, 10, 20, 23, 3, 37, 60, 70, 80};
     std::vector<int> secondArray = {26, 6, 134, 135, 15, 17, 28, 50, 46, 55};
 
