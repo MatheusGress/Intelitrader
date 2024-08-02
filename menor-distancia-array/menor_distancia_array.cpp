@@ -29,12 +29,12 @@ int main()
 
     if (firstArray.size() < 10 || secondArray.size() < 10)
     {
-        std::cerr << "Os arrays devem ter tamanho maior ou igual a 10." << std::endl;
+        std::cerr << "Arrays must have a size greater than or equal to 10." << std::endl;
         return 1;
     }
 
     int shortDistance = FindShortDistance(firstArray, secondArray);
-    std::cout << "A menor distância é: " << shortDistance << std::endl;
+    std::cout << "The shortest distance is: " << shortDistance << std::endl;
 
     return 0;
 }
