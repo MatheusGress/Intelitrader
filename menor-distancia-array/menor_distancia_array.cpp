@@ -2,39 +2,41 @@
 #include <vector>
 #include <climits>
 #include <cmath>
+#include <locale.h>
 
-int encontrarMenorDistancia(const std::vector<int> &primeiroArray, const std::vector<int> &segundoArray)
+int FindShortDistance(const std::vector<int> &firstArray, const std::vector<int> &secondArray)
 {
-    int menorDistancia = INT_MAX;
+    int shortDistance = INT_MAX;
 
-    for (size_t i = 0; i < primeiroArray.size(); ++i)
+    for (size_t i = 0; i < firstArray.size(); ++i)
     {
-        for (size_t j = 0; j < segundoArray.size(); ++j)
+        for (size_t j = 0; j < secondArray.size(); ++j)
         {
-            int distancia = std::abs(primeiroArray[i] - segundoArray[j]);
-            if (distancia < menorDistancia)
+            int distance = std::abs(firstArray[i] - secondArray[j]);
+            if (distance < shortDistance)
             {
-                menorDistancia = distancia;
+                shortDistance = distance;
             }
         }
     }
 
-    return menorDistancia;
+    return shortDistance;
 }
 
 int main()
-{
-    std::vector<int> primeiroArray = {-1, 5, 10, 20, 23, 3, 37, 60, 70, 80};
-    std::vector<int> segundoArray = {26, 6, 134, 135, 15, 17, 28, 50, 46, 55};
+{ 
+    setlocale(LC_ALL, "portuguese");
+    std::vector<int> firstArray = {-1, 5, 10, 20, 23, 3, 37, 60, 70, 80};
+    std::vector<int> secondArray = {26, 6, 134, 135, 15, 17, 28, 50, 46, 55};
 
-    if (primeiroArray.size() < 10 || segundoArray.size() < 10)
+    if (firstArray.size() < 10 || secondArray.size() < 10)
     {
         std::cerr << "Os arrays devem ter tamanho maior ou igual a 10." << std::endl;
         return 1;
     }
 
-    int menorDistancia = encontrarMenorDistancia(primeiroArray, segundoArray);
-    std::cout << "A menor distância é: " << menorDistancia << std::endl;
+    int shortDistance = FindShortDistance(firstArray, secondArray);
+    std::cout << "A menor distância é: " << shortDistance << std::endl;
 
     return 0;
 }
