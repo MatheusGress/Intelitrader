@@ -1,0 +1,62 @@
+# Ignorar arquivos de compilação
+*.o
+*.obj
+*.lo
+*.la
+*.al
+*.libs
+*.so
+*.so.*
+*.dylib
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+*.app
+
+# Ignorar arquivos de depuração
+*.gch
+*.pch
+*.pdb
+*.mod
+*.exp
+
+# Ignorar diretórios de construção
+bin/
+build/
+Build/
+out/
+Debug/
+Release/
+x64/
+x86/
+lib/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de IDEs
+.vscode/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.idea/
+*.iml
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.stackdump
+*.swp
+
+# Ignorar arquivos de configuração específicos do usuário
+*.user
+*.userossc
+*.suo
+*.ntvs*
+
+# Ignorar arquivos temporários
+*.tmp
+*.temp
